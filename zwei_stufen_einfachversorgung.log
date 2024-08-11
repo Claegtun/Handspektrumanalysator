@@ -1,0 +1,74 @@
+Circuit: * C:\users\clayton\Documents\projects\electronics\hsa_r0\zwei_stufen_einfachversorgung.asc
+
+U2:c_cc3: both pins shorted together -- ignoring.
+Direct Newton iteration failed to find .op point.  (Use ".option noopiter" to skip.)
+Starting Gmin stepping
+Gmin = 10
+Gmin = 1.07374
+Gmin = 0.115292
+vernier = 0.5
+Gmin = 0.0327572
+vernier = 0.666667
+vernier = 0.333333
+vernier = 0.166667
+vernier = 0.0833333
+vernier = 0.0416667
+vernier = 0.0208333
+vernier = 0.0104167
+vernier = 0.00520833
+Gmin = 0.0240665
+vernier = 0.00260417
+vernier = 0.00130208
+vernier = 0.000651042
+vernier = 0.000488281
+Gmin = 0
+Gmin stepping failed
+
+Starting source stepping with srcstepmethod=0
+Source Step = 3.0303%
+Source Step = 33.3333%
+Source Step = 63.6364%
+Source Step = 82.197%
+Source Step = 82.9072%
+Source Step = 83.3807%
+Source Step = 83.8542%
+Source Step = 84.3277%
+Source Step = 84.8011%
+vernier = 0.0234375
+Source Step = 85.4167%
+Source Step = 86.1269%
+Source Step = 86.8371%
+Source Step = 87.5473%
+Source Step = 88.2576%
+vernier = 0.0351562
+Source Step = 89.1454%
+Source Step = 90.2107%
+Source Step = 91.276%
+Source Step = 92.3414%
+Source Step = 93.4067%
+vernier = 0.0527344
+Source Step = 94.6851%
+Source Step = 96.2831%
+Source Step = 97.8812%
+Source Step = 99.4792%
+Source stepping succeeded in finding the operating point.
+
+
+Date: Mon Jan  8 12:37:42 2024
+Total elapsed time: 0.246 seconds.
+
+tnom = 27
+temp = 27
+method = trap
+totiter = 3062
+traniter = 0
+tranpoints = 0
+accept = 0
+rejected = 0
+matrix size = 136
+fillins = 273
+solver = Normal
+Avg thread counts: 3.4/0.0/17.6/3.4
+Matrix Compiler1:    1027 opcodes
+Matrix Compiler2: off  [0.9]/2.0/1.1
+

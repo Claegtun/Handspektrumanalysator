@@ -1,0 +1,22 @@
+Circuit: * C:\users\clayton\Documents\projects\electronics\hsa_r0\Draft2.asc
+
+Direct Newton iteration for .op point succeeded.
+
+Date: Sun Jan  7 12:27:09 2024
+Total elapsed time: 0.087 seconds.
+
+tnom = 27
+temp = 27
+method = modified trap
+totiter = 2139
+traniter = 2126
+tranpoints = 1064
+accept = 1058
+rejected = 6
+matrix size = 100
+fillins = 143
+solver = Normal
+Avg thread counts: 4.5/7.9/7.9/4.5
+Matrix Compiler1: 13.28 KB object code size  1.8/1.0/[0.6]
+Matrix Compiler2: 11.43 KB object code size  0.7/0.8/[0.5]
+
