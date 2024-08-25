@@ -3337,7 +3337,7 @@
 		)
 		(uuid "ffe65c1f-f7ea-430e-bb3d-0d7fe8bd9419")
 	)
-	(text_box "Des ADUs Datenblatt sagt, dass der Kondensator des VREFs tantal sein soll."
+	(text_box "Das Datenblatt des ADUs sagt, dass der Kondensator des VREFs tantal sein soll."
 		(exclude_from_sim no)
 		(at 208.28 36.83 0)
 		(size 25.4 10.16)
@@ -3355,6 +3355,63 @@
 			(justify left top)
 		)
 		(uuid "194ee093-fd77-4596-b482-9d69e79f56a0")
+	)
+	(text_box "15.9 mVpp bei 90 dB(SPL), 1 kHz"
+		(exclude_from_sim no)
+		(at 69.85 50.8 0)
+		(size 25.4 6.35)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(fill
+			(type none)
+		)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left top)
+		)
+		(uuid "1e09fb98-a3de-4630-adf4-fb1f34986049")
+	)
+	(text_box "Die Verstärkung sei um 44 dB."
+		(exclude_from_sim no)
+		(at 63.5 88.9 0)
+		(size 19.05 6.35)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(fill
+			(type none)
+		)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left top)
+		)
+		(uuid "2e41f166-561c-43be-9596-5c57e9780d63")
+	)
+	(text_box "In LTspice war die Bandbreite um 24 kHz bei -3 dB und um 180 kHz bei -40 dB."
+		(exclude_from_sim no)
+		(at 139.7 88.9 0)
+		(size 25.4 12.7)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(fill
+			(type none)
+		)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left top)
+		)
+		(uuid "736e1102-2b48-49b5-add8-d81a0f12efae")
 	)
 	(text_box "Beide Kondensator an der Referenz müssen niederen ESW haben."
 		(exclude_from_sim no)
@@ -3374,6 +3431,25 @@
 			(justify left top)
 		)
 		(uuid "86dddd5a-d5df-4eda-8dac-29931ecde3cf")
+	)
+	(text_box "2.5 Vpp bei 90 dB(SPL), 1 kHz"
+		(exclude_from_sim no)
+		(at 107.95 88.9 0)
+		(size 25.4 6.35)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(fill
+			(type none)
+		)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left top)
+		)
+		(uuid "abed87f9-67c8-4177-9a29-519489e1e3cb")
 	)
 	(text_box "Der ESW darf höchstens 500 mΩ sein."
 		(exclude_from_sim no)
@@ -5682,7 +5758,7 @@
 				(justify right)
 			)
 		)
-		(property "Value" "7.5n"
+		(property "Value" "3n"
 			(at 137.16 76.1999 0)
 			(effects
 				(font
@@ -6221,7 +6297,7 @@
 				)
 			)
 		)
-		(property "Value" "7.5n"
+		(property "Value" "6.8n"
 			(at 140.97 57.15 90)
 			(effects
 				(font
@@ -6356,7 +6432,7 @@
 				)
 			)
 		)
-		(property "Value" "13.8k"
+		(property "Value" "16k"
 			(at 101.6 78.74 90)
 			(effects
 				(font
