@@ -1,0 +1,4 @@
+(sym_lib_table
+  (version 7)
+  (lib (name "maßsymbole")(type "KiCad")(uri "${KIPRJMOD}/maßsymbole.kicad_sym")(options "")(descr ""))
+)

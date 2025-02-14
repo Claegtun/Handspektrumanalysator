@@ -1,0 +1,22 @@
+Circuit: * C:\users\clayton\Documents\projects\electronics\hsa_r0\filter_band.asc
+
+Direct Newton iteration for .op point succeeded.
+
+Date: Thu Jan  4 13:36:20 2024
+Total elapsed time: 0.092 seconds.
+
+tnom = 27
+temp = 27
+method = modified trap
+totiter = 2085
+traniter = 2082
+tranpoints = 1042
+accept = 1042
+rejected = 0
+matrix size = 15
+fillins = 9
+solver = Normal
+Avg thread counts: 4.5/8.1/8.1/4.5
+Matrix Compiler1: 1.11 KB object code size  0.5/0.3/[0.2]
+Matrix Compiler2: 1.37 KB object code size  0.2/0.3/[0.2]
+

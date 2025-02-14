@@ -1,0 +1,4 @@
+(fp_lib_table
+  (version 7)
+  (lib (name "maßstandflächen")(type "KiCad")(uri "/home/clayton/Documents/projects/electronics/hsa_r0/maßstandflächen.pretty")(options "")(descr ""))
+)

@@ -1,0 +1,9 @@
+{
+    "build": {
+        "includeDir": "./DSP/Include",
+        "srcDir": "./DSP/Source",
+        "flags": [
+            "-I ./DSP/PrivateInclude"
+        ]
+    }
+}
