@@ -11,6 +11,7 @@
 #include "coefficients.hpp"
 #include "device/AADU.hpp"
 #include "device/DigitalFilter.hpp"
+#include "device/Encoder.hpp"
 #include "module/Spectrum.hpp"
 #include "../lib/driver/st7789/src/driver_st7789.h"
 #include "../lib/driver/st7789/interface/driver_st7789_interface.h"
@@ -37,32 +38,32 @@ int main(void) {
 
     SET_BIT(GPIOA->BSRR, 1+16); // Reset pin-1.
 
-    // TIM3
-    SET_BIT(RCC->APB1LENR, 1);  // Enable the clock for TIM3.
+    // TIM5
+    SET_BIT(RCC->APB1LENR, 3);  // Enable the clock for TIM5.
 
-    CLEAR_BIT(TIM3->CR1, 4); // Count upwards.
-    CLEAR_BIT(TIM3->CR1, 3); // Keep counting.
+    CLEAR_BIT(TIM5->CR1, 4); // Count upwards.
+    CLEAR_BIT(TIM5->CR1, 3); // Keep counting.
 
-    SET_BIT(TIM3->CR2, 7); // Use CH3.
+    SET_BIT(TIM5->CR2, 7); // Use CH3.
 
-    SET_BIT(TIM3->EGR, 3); // Generate capture/compare.
+    SET_BIT(TIM5->EGR, 3); // Generate capture/compare.
 
-    CLEAR_FIELD(TIM3->CCMR2, 0, 0b11);      // Set CH3 to an output.
-    WRITE_FIELD(TIM3->CCMR2, 4, 0xF, 0x6);  // Set to PWM Mode-1.
+    CLEAR_FIELD(TIM5->CCMR2, 0, 0b11);      // Set CH3 to an output.
+    WRITE_FIELD(TIM5->CCMR2, 4, 0xF, 0x6);  // Set to PWM Mode-1.
 
-    CLEAR_BIT(TIM3->CCER, 9);   // Set the polarity to active high.
-    SET_BIT(TIM3->CCER, 8);     // Enable the capture.
+    CLEAR_BIT(TIM5->CCER, 9);   // Set the polarity to active high.
+    SET_BIT(TIM5->CCER, 8);     // Enable the capture.
 
     // Peripheral clock is 64 MHz.
-    TIM3->PSC = 999; // Set the prescaler.
-    TIM3->ARR = 63999;   // Set the period.
-    TIM3->CCR3 = 900;  // Set the duty-cycle.
+    TIM5->PSC = 999; // Set the prescaler.
+    TIM5->ARR = 63999;   // Set the period.
+    TIM5->CCR3 = 900;  // Set the duty-cycle.
 
-    NVIC_EnableIRQ(TIM3_IRQn); // Enable the NVIC interrupt.
+    NVIC_EnableIRQ(TIM5_IRQn); // Enable the NVIC interrupt.
 
-    SET_BIT(TIM3->DIER, 0); // Enable the update-interrupt.
+    SET_BIT(TIM5->DIER, 0); // Enable the update-interrupt.
     
-    SET_BIT(TIM3->CR1, 0); // Begin counting.
+    SET_BIT(TIM5->CR1, 0); // Begin counting.
 
     HAL_Delay(3000);
 
@@ -110,10 +111,16 @@ int main(void) {
     device::AADU aadu;
     device::DigitalFilter fir;
 
+    device::Encoder<0> encoder_top;
+    device::Encoder<1> encoder_bottom;
+
     arm_rfft_fast_instance_f32 fft;
     arm_rfft_fast_init_2048_f32(&fft);
 
-    module::Spectrum<320, 240> spectrum(lcd_module);
+    module::Spectrum<310, 220, 0, 20> spectrum(lcd_module);
+
+    volatile float32_t f_m = 1e3;
+    volatile int8_t scaling = 1;
 
     // std::array<int16_t, 320> height;
     // std::fill(height.begin(), height.end(), 0x0000);
@@ -147,7 +154,14 @@ int main(void) {
 
             abs_X[0] *= 0.01;
 
-            spectrum.draw(abs_X, 1e3, 2e3);
+            scaling += encoder_bottom.get_shift();
+            float32_t delta = encoder_top.get_shift()*module::f_s/module::F;
+            if (scaling > 1) {
+                delta *= scaling;
+            }
+            f_m += delta;
+
+            spectrum.draw(abs_X, f_m, scaling);
 
             aadu.begin_frame();
 
@@ -161,9 +175,9 @@ int main(void) {
     }
 }
 
-extern "C" void TIM3_IRQHandler(void) {
-    if ((TIM3->SR & 0b1) == 0b1) {
-        CLEAR_BIT(TIM3->SR, 0); // Clear the pending interrupt bit.
+extern "C" void TIM5_IRQHandler(void) {
+    if ((TIM5->SR & 0b1) == 0b1) {
+        CLEAR_BIT(TIM5->SR, 0); // Clear the pending interrupt bit.
         TOGGLE_BIT(GPIOA->ODR, 1); // Toggle the yellow LED.
     }
 }
